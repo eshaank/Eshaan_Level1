@@ -18,8 +18,9 @@ import javax.swing.JPanel;
 public class DrumKit extends MouseAdapter {
 
 	JLabel drumLabelWithImage;
-   JLabel hai;
-   JLabel tehee;
+	JLabel hai;
+	JLabel tehee;
+
 	public static void main(String[] args) throws Exception {
 		new DrumKit().getGoing();
 	}
@@ -53,7 +54,7 @@ public class DrumKit extends MouseAdapter {
 		troll.setLayout(new GridLayout());
 		lol.pack();
 		hai.addMouseListener(this);
-		
+
 		String hihat = "Products6012-1200x1200-730486.jpg";
 		tehee = createLabelImage(hihat);
 		troll.add(tehee);
@@ -72,16 +73,14 @@ public class DrumKit extends MouseAdapter {
 		// 16. If they clicked on the drumImage...
 
 		// 17. ...use the playSound method to play a drum sound.
-		String sound3 = "44946__sascha-burghard__hihat-cl-c3000b-10";
+		String sound3 = "185033__casmarrav__reso-hihat.wav";
 		String sound2 = "208871__adammusic18__bass-drum-kick.wav";
 		String sound = "270156__theriavirra__04c-snare-smooth-cymbals-snares.wav";
 		if (drumLabelWithImage.equals(drumClicked)) {
 			playSound(sound);
-		}
-		else if (hai.equals(drumClicked)) {
+		} else if (hai.equals(drumClicked)) {
 			playSound(sound2);
-		}
-		else if(tehee.equals(drumClicked)){
+		} else if (tehee.equals(drumClicked)) {
 			playSound(sound3);
 		}
 		// 18. Add more images to make a drumkit. Remember to add a mouse listener to each one.
