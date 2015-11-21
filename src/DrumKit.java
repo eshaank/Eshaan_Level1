@@ -21,7 +21,7 @@ public class DrumKit extends MouseAdapter {
 	JLabel hai;
 	JLabel tehee;
 	JLabel goteem;
-
+   JLabel sandstorm;
 	public static void main(String[] args) throws Exception {
 		new DrumKit().getGoing();
 	}
@@ -29,6 +29,7 @@ public class DrumKit extends MouseAdapter {
 	private void getGoing() throws MalformedURLException {
 		// 1. Make a JFrame variable and initialize it using "new JFrame()"
 		JFrame lol = new JFrame();
+		lol.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// 2. Make the frame visible
 		lol.setVisible(true);
 		// 3. Set the size of the frame
@@ -81,6 +82,8 @@ public class DrumKit extends MouseAdapter {
 		// 16. If they clicked on the drumImage...
 
 		// 17. ...use the playSound method to play a drum sound.
+		
+		String derps = "155014__andyfox42__derp.wav";
 		String sound3 = "185033__casmarrav__reso-hihat.wav";
 		String sound2 = "208871__adammusic18__bass-drum-kick.wav";
 		String sound = "270156__theriavirra__04c-snare-smooth-cymbals-snares.wav";
@@ -90,6 +93,9 @@ public class DrumKit extends MouseAdapter {
 			playSound(sound2);
 		} else if (tehee.equals(drumClicked)) {
 			playSound(sound3);
+		}
+		else if (goteem.equals(drumClicked)) {
+			playSound(derps);
 		}
 		// 18. Add more images to make a drumkit. Remember to add a mouse listener to each one.
 	}
