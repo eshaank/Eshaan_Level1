@@ -20,6 +20,7 @@ public class DrumKit extends MouseAdapter {
 	JLabel drumLabelWithImage;
 	JLabel hai;
 	JLabel tehee;
+	JLabel goteem;
 
 	public static void main(String[] args) throws Exception {
 		new DrumKit().getGoing();
@@ -61,6 +62,13 @@ public class DrumKit extends MouseAdapter {
 		troll.setLayout(new GridLayout());
 		lol.pack();
 		tehee.addMouseListener(this);
+		
+		String something = "ObamaDerpy.png";
+		goteem = createLabelImage(something);
+		troll.add(goteem);
+		troll.setLayout(new GridLayout());
+		lol.pack();
+		goteem.addMouseListener(this);
 	}
 
 	public void mouseClicked(MouseEvent e) {
