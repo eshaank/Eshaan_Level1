@@ -81,6 +81,7 @@ public class DrumKit extends MouseAdapter {
 		// 16. If they clicked on the drumImage...
 
 		// 17. ...use the playSound method to play a drum sound.
+		String derpess = "";
 		String sound3 = "185033__casmarrav__reso-hihat.wav";
 		String sound2 = "208871__adammusic18__bass-drum-kick.wav";
 		String sound = "270156__theriavirra__04c-snare-smooth-cymbals-snares.wav";
