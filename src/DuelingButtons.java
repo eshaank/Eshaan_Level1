@@ -45,9 +45,9 @@ public class DuelingButtons implements ActionListener {
 		middleButton.setForeground(Color.MAGENTA);
 		// 5. Add an action listener to the leftButton
 		leftButton.addActionListener(this);
-		// 6. Add an action listener to the rightButton
+		leftButton.setForeground(Color.ORANGE);
 		rightButton.addActionListener(this);
-		// 7. Add the leftButton to the panel
+		rightButton.setForeground(Color.BLUE);
 		panel.add(leftButton);
 		// 8. Add the rightButton to the panel
 		panel.add(rightButton);
@@ -55,7 +55,7 @@ public class DuelingButtons implements ActionListener {
 		frame.pack();
 		// 10. Set the title of the frame to "Demanding Buttons"
 		frame.setTitle("Demanding Buttons");
-		
+
 	}
 
 	@Override
@@ -75,14 +75,19 @@ public class DuelingButtons implements ActionListener {
 			rightButton.setText("Click me!");
 			leftButton.setPreferredSize(BIG);
 		}
-		if (counter == 25) {
+		if (counter == 10) {
 			middleButton.setText("No! Just Click me already!");
 			middleButton.setPreferredSize(BIG);
 			rightButton.setPreferredSize(SMALL);
-			rightButton.setText("Click me!");
+			rightButton.setText("Click Me.");
 			leftButton.setPreferredSize(SMALL);
-			leftButton.setText("Click me!");
+			leftButton.setText("Click Me.");
 		}
+		if (buttonPressed == middleButton) {
+			JOptionPane.showMessageDialog(null, "You made the right choice and chose me!");
+           System.exit(0);
+		}
+
 		/* If the buttonPressed was the leftButton.... */
 		// Set the text of the rightButton to "No, click Me!"
 		// Set the PREFERRED size of the rightButton to BIG
