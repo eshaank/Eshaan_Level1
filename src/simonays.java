@@ -31,10 +31,10 @@ public class simonays extends KeyAdapter {
 		JOptionPane.showMessageDialog(null, "Press the matching key when 'Simon says' otherwise press a different key");
 		showImage();
 	}
-
+	int score = 0;
 	public void keyPressed(KeyEvent e) {
 		int keyCode = e.getKeyCode();
-		int score = 0;
+
 		// 17. if the keyCode matches the imageIndex and "Simon says..."
 		// increase their score
 		if (keyCode == imageIndex && simonSays == 0) {
@@ -47,13 +47,14 @@ public class simonays extends KeyAdapter {
 			score+=1;
 			System.out.println("++1");
 		if (keyCode == 1) {
-			score+=0;
+			score+=1;
 		}
 		}
 		// 19. Use the speak method to tell the user if they were correct or not
 		tries += 1;
 
-		if (tries >= 11) {
+		if (tries >= 5) {
+			JOptionPane.showMessageDialog(null, "Your score is " + score);
 			System.exit(0);
 		}
 		lol.dispose();

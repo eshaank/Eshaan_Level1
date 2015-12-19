@@ -84,7 +84,7 @@ public class DuelingButtons implements ActionListener {
 			leftButton.setText("Click Me.");
 		}
 		if (buttonPressed == middleButton) {
-			JOptionPane.showMessageDialog(null, "You made the right choice and chose me!");
+			
            System.exit(0);
 		}
 
