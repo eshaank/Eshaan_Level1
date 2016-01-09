@@ -45,6 +45,6 @@ public class skyline {
 		Tortoise.turn(-90);
 		Tortoise.move(50);
 		Tortoise.turn(270);
-		// Tortoise.move(50);
+		
 	}
 }
