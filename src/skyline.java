@@ -35,12 +35,18 @@ public class skyline {
 		Tortoise.turn(90);
 		if (size.equals("small")) {
 			Tortoise.move(50);
+			Tortoise.setPenColor(Colors.Greens.DarkGreen);
+			
 		}
 		if (size.equals("medium")) {
 			Tortoise.move(100);
+			Tortoise.setPenColor(Colors.Greens.DarkGreen);
+			
 		}
 		if (size.equals("large")) {
 			Tortoise.move(200);
+			Tortoise.setPenColor(Colors.Greens.DarkGreen);
+		
 		}
 		Tortoise.turn(-90);
 		Tortoise.move(50);
