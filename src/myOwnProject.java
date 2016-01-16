@@ -13,13 +13,16 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 public class myOwnProject extends JPanel implements Runnable, MouseMotionListener {
 
 	BufferedImage maze;
 	final int frameWidth = 300;
 	final int frameHeight = 275;
-
+	Date end;
+	Date start;
+	
 	myOwnProject() throws Exception {
 		maze = ImageIO.read(getClass().getResource("GreenMaze0.2.png"));
 		new Robot().mouseMove(60, 300);
@@ -34,13 +37,14 @@ public class myOwnProject extends JPanel implements Runnable, MouseMotionListene
 		int mouseColor = maze.getRGB(mouseX, mouseY);
 		System.out.println(mouseColor);
 		int line = -16738816;
-//		if (mouseColor == -16738816) {
-//			JOptionPane.showMessageDialog(null, "You Died");
-//			System.exit(0);
-//		}
+		if (mouseColor == -16738816) {
+			JOptionPane.showMessageDialog(null, "You Died");
+			System.exit(0);
+		}
 		if (mouseColor == -8257410) {
+			end = new Date();
 			scare();
-			JOptionPane.showMessageDialog(null, "You Win!!");
+			JOptionPane.showMessageDialog(null, "You Win!! You took " + getDateDiff(start, end, TimeUnit.SECONDS) + "seconds");
 			System.exit(0);
 		}
 	}
@@ -71,11 +75,15 @@ sound.play();
 	}
 
 	public static void main(String[] args) throws Exception {
+//		  start = new Date();
+	        
+	       // display time and date using toString()
 		SwingUtilities.invokeLater(new myOwnProject());
 	}
 
 	@Override
 	public void run() {
+		 start = new Date();
 		JFrame frame = new JFrame("Eshaan's Maze");
 		frame.add(this);
 		setPreferredSize(new Dimension(frameWidth, frameHeight));
@@ -96,5 +104,10 @@ sound.play();
 		// TODO Auto-generated method stub
 
 	}
+	public static long getDateDiff(Date date1, Date date2, TimeUnit timeUnit){
+		long diffinmillies=date2.getTime()-date1.getTime();
+		return timeUnit.convert(diffinmillies, TimeUnit.MILLISECONDS);
+	}
+	
 
 }
