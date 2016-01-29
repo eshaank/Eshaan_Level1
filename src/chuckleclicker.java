@@ -3,6 +3,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class chuckleclicker implements ActionListener {
@@ -10,11 +11,13 @@ public class chuckleclicker implements ActionListener {
 		chuckleclicker cc = new chuckleclicker();
 		cc.makeButtons();
 	}
+
 	JButton leftButton = new JButton();
 
 	JButton rightButton = new JButton();
+
 	void makeButtons() {
-		
+
 		JFrame frame = new JFrame();
 
 		JPanel panel = new JPanel();
@@ -42,11 +45,14 @@ public class chuckleclicker implements ActionListener {
 		JButton buttonPressed = (JButton) arg0.getSource();
 		{
 			System.out.println(arg0);
-			if (buttonPressed.equals (leftButton)) {
+			if (buttonPressed.equals(leftButton)) {
 				leftButton.setText("hi");
+				JOptionPane.showMessageDialog(null, "Your the joke");
+
 			}
-			if (buttonPressed.equals (rightButton)) {
-				rightButton.setText("hi");
+			if (buttonPressed.equals(rightButton)) {
+				rightButton.setText("Tehee");
+				JOptionPane.showMessageDialog(null, "Tehee");
 			}
 		}
 	}
