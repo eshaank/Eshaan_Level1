@@ -35,9 +35,7 @@ public class OpticalIllusions extends MouseAdapter {
 		System.out.println("hi");
 		// 12. remove everything from the frame (the image will not disappear
 		frame.removeAll();
-		frame.setVisible(true);
-
-		frame.setSize(500, 500);
+		
 		// until step 14)111
 		// 13. load a new image like before (this is more than one line of code)
 		
@@ -46,6 +44,7 @@ public class OpticalIllusions extends MouseAdapter {
 		String llamahead = "Stairs_Optical_Illusions.jpg";
 	hi	= loadImageFromComputer(llamahead);
 		 frame.add(hi);
+		 
 		frame.pack();
 		frame.addMouseListener(this);
 	}
