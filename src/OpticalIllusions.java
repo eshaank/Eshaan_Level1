@@ -16,7 +16,7 @@ public class OpticalIllusions extends MouseAdapter {
 
 	// 1. Make a Frame variable and initialize it using "new Frame()"
 	JFrame frame = new JFrame();
-
+	JLabel hi;
 	private void makeAlbum() {
 
 		frame.setVisible(true);
@@ -24,7 +24,6 @@ public class OpticalIllusions extends MouseAdapter {
 		frame.setSize(500, 500);
 //		String llamahead = "funny-optical-illusions.jpg";
 		String something = "dice.jpg";
-		JLabel hi;
 		hi = loadImageFromComputer(something);
 		frame.add(hi);
 		frame.pack();
@@ -34,13 +33,12 @@ public class OpticalIllusions extends MouseAdapter {
 	public void mousePressed(MouseEvent e) {
 		System.out.println("hi");
 		// 12. remove everything from the frame (the image will not disappear
-		frame.removeAll();
+		frame.remove(hi);
 		
 		// until step 14)111
 		// 13. load a new image like before (this is more than one line of code)
 		
 
-		JLabel hi;
 		String llamahead = "Stairs_Optical_Illusions.jpg";
 	hi	= loadImageFromComputer(llamahead);
 		 frame.add(hi);
