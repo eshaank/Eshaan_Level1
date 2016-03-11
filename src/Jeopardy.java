@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.net.URL;
 
 import javax.sound.sampled.AudioInputStream;
@@ -22,8 +23,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
-import java.io.File;
 
 /* This recipe is to be used with the Jeopardy Handout: http://bit.ly/1bvnvd4 */
 
@@ -54,44 +53,49 @@ public class Jeopardy implements ActionListener {
 		// method
 		JPanel hi = createHeader("DC Comic TV Shows");
 
-		// 4. Add the header component to the quizPanel
 		quizPanel.add(hi);
-		// 5. Add the quizPanel to the frame
+
 		frame.add(quizPanel);
-		// 6. Use the createButton method to set the value of firstButton
+
+		fourthButton = createButton("$100");
+
+		quizPanel.add(fourthButton);
+
+		secondButton = createButton("$200");
+
+		quizPanel.add(secondButton);
+
 		firstButton = createButton("$800");
-		// 7. Add the firstButton to the quizPanel
+
 		quizPanel.add(firstButton);
-		// 8. Write the code inside the createButton() method below. Check that
-		// your game looks like Figure 1 in the Jeopardy Handout -
-		// http://bit.ly/1bvnvd4.
+
+		thirdButton = createButton("$1000");
+
+		quizPanel.add(thirdButton);
 
 		// 9. Use the secondButton variable to hold a button using the
 		// createButton method
-		secondButton = createButton("$200");
-		// 10. Add the secondButton to the quizPanel
-		quizPanel.add(secondButton);
 		// 11. Add action listeners to the buttons (2 lines of code)
- firstButton.addActionListener(this);
- secondButton.addActionListener(this);
+		firstButton.addActionListener(this);
+		secondButton.addActionListener(this);
+		thirdButton.addActionListener(this);
+		fourthButton.addActionListener(this);
 		// 12. Fill in the actionPerformed() method below
 
 		frame.pack();
 		quizPanel.setLayout(new GridLayout(buttonCount + 1, 3));
 		frame.add(makeScorePanel(), BorderLayout.NORTH);
-		frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().height,
-				Toolkit.getDefaultToolkit().getScreenSize().width);
+		frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().height, Toolkit.getDefaultToolkit().getScreenSize().width);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	/*
 	 * 13. Use the method provided to play the Jeopardy theme music
 	 * 
-	 * 14. Add buttons so that you have $200, $400, $600, $800 and $1000
-	 * questions
+	 * 14. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
 	 *
-	 * [optional] Use the showImage or playSound methods when the user answers a
-	 * question [optional] Add new topics for the quiz
+	 * [optional] Use the showImage or playSound methods when the user answers a question [optional] Add new topics for
+	 * the quiz
 	 */
 
 	private JButton createButton(String dollarAmount) {
@@ -108,51 +112,48 @@ public class Jeopardy implements ActionListener {
 
 	public void actionPerformed(ActionEvent arg0) {
 		// Remove this temporary message:
-		
 
 		// Use the method that plays the jeopardy theme music.
 		playJeopardyTheme();
 		JButton buttonPressed = (JButton) arg0.getSource();
 		// If the buttonPressed was the firstButton
-if(buttonPressed == firstButton){
-	askQuestion("Who is Zoom from the TV Show the Flash?", "What is Jay Garrick?", 800 );
-}
-		
-if (buttonPressed == secondButton) {
-	askQuestion("From the Arrow, why did Felicity Smoak divorce Oliver?", "What is Oliver didn't tell Felicity that he had a child?", 200);
-}
-		
+		if (buttonPressed == fourthButton) {
+			askQuestion("Who is Deathstroke fro Green Arrow?", "Who is Slade Wilson", 100);
+		}
+
+		if (buttonPressed == secondButton) {
+			askQuestion("From the Arrow, why did Felicity Smoak divorce Oliver?", "What is Oliver didn't tell Felicity that he had a child?", 200);
+		}
+
+		if (buttonPressed == firstButton) {
+			askQuestion("Who is Zoom from the TV Show the Flash?", "Who is Jay Garrick", 800);
+		}
+
+		if (buttonPressed == thirdButton) {
+			askQuestion("Who kills Oliver Queen's dad in the TV show Green Arrow?", "Who is himself", 1000);
+		}
 		// Clear the button text (set the button text to nothing)
-buttonPressed.setText("");
+		buttonPressed.setText("");
 	}
 
 	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
-		// Remove this temporary message
-		JOptionPane.showMessageDialog(null, "this is where the question will be asked");
-		// Use a pop up to ask the user the question
 
+		String answer = JOptionPane.showInputDialog(question);
 		// If the answer is correct
-
-		// Increase the score by the prizeMoney
-
-		// Call the updateScore() method
-
-		// Pop up a message to tell the user they were correct
-
-		// Otherwise
-
-		// Decrement the score by the prizeMoney
-
-		// Pop up a message to tell the user the correct answer
-
-		// Call the updateScore() method
+		if (answer.equals(correctAnswer)) {
+			score += prizeMoney;
+			JOptionPane.showMessageDialog(null, "You're correct.");
+		} else {
+			score -= prizeMoney;
+			JOptionPane.showMessageDialog(null, "Correct answer is " + correctAnswer);
+		}
+		updateScore();
 
 	}
 
 	public void playJeopardyTheme() {
 		try {
-			AudioInputStream audioInputStream = AudioSystem
-					.getAudioInputStream(new File("/Users/League/Google Drive/league-sounds/jeopardy.wav"));
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/League/Google Drive/league-sounds/jeopardy.wav"));
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
 			clip.start();
@@ -170,7 +171,7 @@ buttonPressed.setText("");
 		JPanel panel = new JPanel();
 		panel.add(new JLabel("score:"));
 		panel.add(scoreBox);
-		panel.setBackground(Color.CYAN);
+		panel.setBackground(Color.blue);
 		return panel;
 	}
 
