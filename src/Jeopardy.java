@@ -29,7 +29,7 @@ import javax.swing.JPanel;
 public class Jeopardy implements ActionListener {
 	private JButton firstButton;
 	private JButton secondButton;
-	private JButton thirdButton, fourthButton;
+	private JButton thirdButton, fourthButton, fifthButton, sixthButton;
 
 	private JPanel quizPanel;
 	int score = 0;
@@ -57,22 +57,29 @@ public class Jeopardy implements ActionListener {
 
 		frame.add(quizPanel);
 
-		fourthButton = createButton("$100");
+		fourthButton = createButton("$200");
 
 		quizPanel.add(fourthButton);
 
-		secondButton = createButton("$200");
+		secondButton = createButton("$400");
 
 		quizPanel.add(secondButton);
 
-		firstButton = createButton("$800");
+		firstButton = createButton("$600");
 
 		quizPanel.add(firstButton);
 
-		thirdButton = createButton("$1000");
+		thirdButton = createButton("$800");
 
 		quizPanel.add(thirdButton);
 
+		fifthButton = createButton("$1000");
+
+		quizPanel.add(fifthButton);
+
+		sixthButton = createButton("$5000");
+
+		quizPanel.add(sixthButton);
 		// 9. Use the secondButton variable to hold a button using the
 		// createButton method
 		// 11. Add action listeners to the buttons (2 lines of code)
@@ -80,6 +87,8 @@ public class Jeopardy implements ActionListener {
 		secondButton.addActionListener(this);
 		thirdButton.addActionListener(this);
 		fourthButton.addActionListener(this);
+		fifthButton.addActionListener(this);
+		sixthButton.addActionListener(this);
 		// 12. Fill in the actionPerformed() method below
 
 		frame.pack();
@@ -118,19 +127,27 @@ public class Jeopardy implements ActionListener {
 		JButton buttonPressed = (JButton) arg0.getSource();
 		// If the buttonPressed was the firstButton
 		if (buttonPressed == fourthButton) {
-			askQuestion("Who is Deathstroke fro Green Arrow?", "Who is Slade Wilson", 100);
+			askQuestion("Who is Deathstroke fro Green Arrow?", "Who is Slade Wilson", 200);
 		}
 
 		if (buttonPressed == secondButton) {
-			askQuestion("From the Arrow, why did Felicity Smoak divorce Oliver?", "What is Oliver didn't tell Felicity that he had a child?", 200);
+			askQuestion("From The Arrow, why did Felicity Smoak divorce Oliver?", "What is Oliver didn't tell Felicity that he had a child?", 200);
 		}
 
 		if (buttonPressed == firstButton) {
-			askQuestion("Who is Zoom from the TV Show the Flash?", "Who is Jay Garrick", 800);
+			askQuestion("Who is Zoom from the TV Show The Flash?", "Who is Jay Garrick", 600);
 		}
 
 		if (buttonPressed == thirdButton) {
-			askQuestion("Who kills Oliver Queen's dad in the TV show Green Arrow?", "Who is himself", 1000);
+			askQuestion("Who kills Oliver Queen's dad in the TV show Green Arrow?", "Who is himself", 800);
+		}
+
+		if (buttonPressed == fifthButton) {
+			askQuestion("What is Deadpool's real name?", "Who is Wade Wilson", 1000);
+		}
+
+		if (buttonPressed == sixthButton) {
+			askQuestion("How much does Wade Wilson weigh", "What is 210 lbs.", 5000);
 		}
 		// Clear the button text (set the button text to nothing)
 		buttonPressed.setText("");
@@ -171,7 +188,7 @@ public class Jeopardy implements ActionListener {
 		JPanel panel = new JPanel();
 		panel.add(new JLabel("score:"));
 		panel.add(scoreBox);
-		panel.setBackground(Color.blue);
+		panel.setBackground(Color.RED);
 		return panel;
 	}
 
