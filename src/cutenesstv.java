@@ -7,15 +7,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class cutenesstv implements ActionListener {
+	JButton hi = new JButton();
+	JButton lol = new JButton();
+	JButton troll = new JButton();
+
 	public static void main(String[] args) {
 		cutenesstv hai = new cutenesstv();
 		hai.whatEver();
 	}
 
 	void whatEver() {
-		JButton hi = new JButton();
-		JButton lol = new JButton();
-		JButton troll = new JButton();
 		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
 
@@ -56,8 +57,18 @@ public class cutenesstv implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		JButton buttonPressed = (JButton) e.getSource();
+		System.out.println(e);
 		// TODO Auto-generated method stub
-
+		if (buttonPressed == hi) {
+			showDucks();
+		}
+		if (buttonPressed == troll) {
+			showFrog();
+		}
+		if (buttonPressed == lol) {
+			showFluffyUnicorns();
+		}
 	}
 
 }
