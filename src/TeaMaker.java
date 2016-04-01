@@ -1,13 +1,16 @@
 // Copyright Wintriss Technical Schools 2013
 public class TeaMaker {
 	public static void main(String[] args) {
-		TeaMaker lol = new TeaMaker();
-		lol.cu();
-	}
-
-	public void cu() {
 		Kettle hi = new Kettle();
+		Cup lolz = new Cup();
+		TeaBag haha = new TeaBag("Mint");
+
+		hi.getWater();
+		Kettle.Water w = hi.getWater();
 		hi.boil();
+		haha.getFlavor();
+		lolz.makeTea(haha, w);
+
 	}
 
 }
@@ -64,6 +67,11 @@ class Cup {
 			System.out.println("Making hot " + teabag.getFlavor() + " tea.");
 		else
 			System.out.println("Can't make tea with cold water! ");
+	}
+
+	public void makeTea(boolean b) {
+		// TODO Auto-generated method stub
+
 	}
 
 }
