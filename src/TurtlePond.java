@@ -76,15 +76,26 @@ public class TurtlePond implements KeyEventDispatcher {
 			Tortoise.getBackgroundWindow().setBackground(Color.yellow);
 		}
 		// 8. If the Tortoise is within 50 pixels of the food, set the background color to orange
-
+		if (Math.abs(Tortoise.getX() - cookieX) < 100 && Math.abs(Tortoise.getY() - cookieY) < 50) {
+			Tortoise.getBackgroundWindow().setBackground(Color.ORANGE);
+		}
 		// 9. If the Tortoise is within 20 pixels of the food, set the background color to red
-
+		if (Math.abs(Tortoise.getX() - cookieX) < 100 && Math.abs(Tortoise.getY() - cookieY) < 20) {
+			Tortoise.getBackgroundWindow().setBackground(Color.red);
+		}
 		// 10. If the Tortoise is within 5 pixels of the cookie, make a pop-up to tell them they found it
-
+		if (Math.abs(Tortoise.getX() - cookieX) < 100 && Math.abs(Tortoise.getY() - cookieY) < 5) {
+			JOptionPane.showMessageDialog(null, "You found the food. The turtle is not starving anymore. :D");
+		}
 		// 11. If more than 20 seconds have elapsed, tell them the turtle died of hunger!
-
+if ( getTimeElapsed() > 20) {
+	JOptionPane.showMessageDialog(null, "You failed. The turtle died of hunger. He hates you in the graveyard.");
+	System.exit(0);
+}
 		// 12. If the Tortoise crosses it's own path, tell them they failed and move them back to the beginning
-
+if (wasHereBefore(Tortoise.getX(), Tortoise.getY())) {
+	System.exit(0);
+}
 	}
 
 	private long getTimeElapsed() {
