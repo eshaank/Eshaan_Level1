@@ -1,6 +1,7 @@
 import java.awt.Component;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Random;
@@ -19,28 +20,44 @@ import javax.swing.JOptionPane;
  * Learn how to hook up the Makey Makey here: http://makeymakey.com/howto.php
  * 
  */
-public class EatME extends KeyAdapter {
 
+public class EatME2 extends KeyAdapter {
+	int score = 0;
 	JFrame jFrame;
 	HashMap<Integer, String> images = new HashMap<Integer, String>();
 	private int correctUtensilCode;
-	int score = 0;
 
 	private void makeAlbum() {
 		// 1. Find 4 images of foods eaten by different utensils and put them in
 		// your default package
 		// 2. Connect the images to the UP, DOWN, LEFT, and RIGHT keys like
 		// this...
-		images.put(new Integer(KeyEvent.VK_UP), "Farfalle_Pasta.JPG");
-		images.put(new Integer(KeyEvent.VK_LEFT), "7-scoop-ice-cream-cone.jpg");
-		images.put(new Integer(KeyEvent.VK_RIGHT), "imgres.jpg");
-		images.put(new Integer(KeyEvent.VK_DOWN), "imgres-1.jpg");
+		images.put(new Integer(KeyEvent.VK_UP), "images-1.jpg"); // the spoon
+																	// will be
+																	// connected
+																	// to the UP
+																	// key
+		images.put(new Integer(KeyEvent.VK_LEFT), "manydonuts.jpg"); // the
+																		// chopstick
+																		// will
+																		// be
+																		// connected
+																		// to
+																		// the
+																		// LEFT
+																		// key
+		images.put(new Integer(KeyEvent.VK_RIGHT), "images.jpg");
+		images.put(new Integer(KeyEvent.VK_DOWN), "imgres.jpg");
 
-		// 3. Call the method to show an image
 		showImage();
+		// 3. Call the method to show an image
 	}
 
 	private void showImage() {
+		// JOptionPane.showMessageDialog(null,
+		// "You called the method correctly! Now remove this annoying pop-up
+		// from your code.");
+
 		// 4. Initialize your jFrame to a new JFrame() (jFrame already exists)
 		jFrame = new JFrame();
 		// 5. Set the JFrame to visible
@@ -54,6 +71,8 @@ public class EatME extends KeyAdapter {
 	}
 
 	public void keyPressed(KeyEvent e) {
+		// JOptionPane.showMessageDialog(null, "A key was pressed! Remove the
+		// code for this annoying pop-up.");
 		int whichKeyPressed = e.getKeyCode();
 		// 8. Print out the key that was pressed
 		System.out.println(whichKeyPressed);
@@ -61,22 +80,31 @@ public class EatME extends KeyAdapter {
 		System.out.println(correctUtensilCode);
 		// 10. If they match, tell the user they were correct
 		if (whichKeyPressed == correctUtensilCode) {
-			score += 1;
-			JOptionPane.showMessageDialog(null, "You're correct. Your score is now " + score);
 			showImage();
+			score += 1;
+			JOptionPane.showMessageDialog(null, "Your score is now " + score);
 		}
 		// 11. Otherwise, tell the user that they should learn some manners
 		else {
-			JOptionPane.showMessageDialog(null, "Learn some manners people! Your score " + score);
-			System.exit(0);
-			jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			JOptionPane.showMessageDialog(null, "Learn some manners");
 		}
+
+		if (score == 10) {
+			System.exit(0);
+		}
+		// 12. Hook up the utensils to the Makey Makey and test if it works
+
+		jFrame.dispatchEvent(new WindowEvent(jFrame, WindowEvent.WINDOW_CLOSING)); // closes
+																					// the
+																					// window
+
+		// 13. Call the method to show an image
+		showImage();
 		// 14. Make a variable for the number of tries and limit it to
-		int tries = 10;
+
 		// 10.[requires code in different places]
 
 		// 15. Make a variable to track the score and tell the user at the end.
-
 		// [requires code in different places]
 	}
 
@@ -107,7 +135,7 @@ public class EatME extends KeyAdapter {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new EatME().makeAlbum();
+		new EatME2().makeAlbum();
 	}
 }
 
